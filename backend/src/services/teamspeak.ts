@@ -26,7 +26,12 @@ class TeamSpeakService {
           maxClients: 0,
           ping: 0,
           uptime: 0,
-          lastUpdated: new Date()
+          lastUpdated: new Date(),
+          packetLoss: 0,
+          bytesReceived: 0,
+          bytesSent: 0,
+          platform: 'unknown',
+          version: 'unknown'
         },
         lastConnectAttempt: 0
       });
@@ -92,7 +97,7 @@ class TeamSpeakService {
         return {
           id: parseInt(String(clientData.clid || '0')),
           nickname: String(clientData.clientNickname || clientData.nickname || ''),
-          connectionTime: parseInt(String(clientData.connectionConnectedTime || clientData.connectedTime || '0')),
+          connected: parseInt(String(clientData.connectionConnectedTime || clientData.connectedTime || '0')),
           idleTime: parseInt(String(clientData.clientIdleTime || clientData.idleTime || '0')),
           platform: String(clientData.clientPlatform || clientData.platform || 'unknown'),
           version: String(clientData.clientVersion || clientData.version || 'unknown'),
@@ -286,11 +291,11 @@ class TeamSpeakService {
         logger.warn(`Failed to select virtual server by port ${serverConfig.serverPort}, trying to list servers...`);
         // 如果通过端口选择失败，尝试列出所有虚拟服务器并查找匹配项
         const serverList = await client.serverList();
-        const targetServer = serverList.find(s => s.virtualserverPort === serverConfig.serverPort);
+        const targetServer = serverList.find(s => s.port === serverConfig.serverPort);
         
         if (targetServer) {
-          await client.use(targetServer.virtualserverId);
-          logger.info(`Successfully selected virtual server with ID ${targetServer.virtualserverId} for server ${serverId}`);
+          await client.useBySid(targetServer.id);
+          logger.info(`Successfully selected virtual server with ID ${targetServer.id} for server ${serverId}`);
         } else {
           throw new Error(`No virtual server found on port ${serverConfig.serverPort}`);
         }

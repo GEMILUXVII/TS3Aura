@@ -15,6 +15,7 @@ router.get('/', async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+  return;
 });
 
 // 获取特定服务器状态

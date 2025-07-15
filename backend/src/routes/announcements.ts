@@ -30,6 +30,7 @@ router.get('/', (req, res) => {
     data: announcements,
     timestamp: new Date()
   });
+  return;
 });
 
 router.get('/:id', (req, res) => {

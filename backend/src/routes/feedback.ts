@@ -67,6 +67,7 @@ router.post('/', async (req, res, next) => {
     logger.error(`Error sending feedback: ${error}`);
     next(error);
   }
+  return;
 });
 
 export default router;
