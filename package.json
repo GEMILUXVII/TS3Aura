@@ -1,0 +1,39 @@
+{
+  "name": "ts3aura",
+  "version": "1.0.0",
+  "description": "A modern, beautiful, and feature-rich web viewer for TeamSpeak 3 servers.",
+  "scripts": {
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "dev": "npm run dev:backend & npm run dev:frontend",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "build": "npm run build:backend && npm run build:frontend",
+    "start:frontend": "cd frontend && npm run preview",
+    "start:backend": "cd backend && npm start",
+    "start": "npm run start:backend & npm run start:frontend",
+    "docker:build": "docker-compose -f docker/docker-compose.yml build",
+    "docker:up": "docker-compose -f docker/docker-compose.yml up -d",
+    "docker:down": "docker-compose -f docker/docker-compose.yml down",
+    "docker:logs": "docker-compose -f docker/docker-compose.yml logs -f",
+    "setup": "chmod +x setup.sh && ./setup.sh",
+    "deploy": "chmod +x deploy.sh && ./deploy.sh"
+  },
+  "keywords": [
+    "teamspeak",
+    "web",
+    "react",
+    "nodejs",
+    "kcpo"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/ts3aura.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/ts3aura/issues"
+  },
+  "homepage": "https://github.com/your-username/ts3aura#readme"
+}

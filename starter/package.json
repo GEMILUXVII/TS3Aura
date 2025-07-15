@@ -1,0 +1,11 @@
+{
+  "name": "teamspeak-web-starter",
+  "version": "1.0.0",
+  "description": "Helper package for TeamSpeak Web Project",
+  "scripts": {
+    "start": "node runServers.js"
+  },
+  "dependencies": {
+    "child_process": "^1.0.2"
+  }
+}

@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  # 前端服务 (Nginx)
+  ts3aura-web:
+    container_name: ts3aura-web
+    build:
+      context: ../frontend
+      dockerfile: ../docker/frontend.Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ../nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ../nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - ts3aura-network
+
+  # 后端服务 (Node.js API)
+  ts3aura-api:
+    container_name: ts3aura-api
+    build:
+      context: ../backend
+      dockerfile: ../docker/backend.Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+    env_file:
+      - ../backend/.env
+    volumes:
+      - ../backend/logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3001/api/health"]
+      timeout: 10s
+      interval: 30s
+      retries: 3
+      start_period: 40s
+    networks:
+      - kcpo-network
+
+  # Redis 缓存 (可选)
+  ts3aura-redis:
+    container_name: ts3aura-redis
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    networks:
+      - kcpo-network
+    command: redis-server --appendonly yes
+
+  # Watchtower (自动更新容器)
+  ts3aura-watchtower:
+    container_name: ts3aura-watchtower
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_POLL_INTERVAL=3600
+    restart: unless-stopped
+
+volumes:
+  redis_data:
+
+networks:
+  ts3aura-network:
+    driver: bridge
