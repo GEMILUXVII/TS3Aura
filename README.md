@@ -13,9 +13,9 @@
 <br>
 
 <div align="center">
-  <a href="https://github.com/your-username/your-repo/releases">
+  <a href="https://github.com/GEMILUXVII/TS3Aura/releases">
     <img src="https://img.shields.io/badge/version-v1.0.0-9644F4?style=for-the-badge" alt="Version"></a>
-  <a href="https://github.com/your-username/your-repo/blob/main/LICENSE">
+  <a href="https://github.com/GEMILUXVII/TS3Aura/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-E53935?style=for-the-badge" alt="License"></a>
   <a href="https://nodejs.org/">
     <img src="https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js Version"></a>
@@ -41,9 +41,9 @@
 <p align="center">
   <a href="#-features"><strong>Explore Features »</strong></a>
   &nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/your-username/your-repo/issues">Report Bug</a>
+  <a href="https://github.com/GEMILUXVII/TS3Aura/issues">Report Bug</a>
   &nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/your-username/your-repo/issues">Request Feature</a>
+  <a href="https://github.com/GEMILUXVII/TS3Aura/issues">Request Feature</a>
 </p>
 
 ## Introduction
@@ -84,8 +84,8 @@ Please ensure your system has [Node.js](https://nodejs.org/) (v18+) and [pnpm](h
 1.  **Clone the project**
 
     ```sh
-    git clone https://github.com/your-username/your-repo.git
-    cd your-repo
+    git clone https://github.com/GEMILUXVII/TS3Aura.git
+    cd TS3Aura
     ```
 
 2.  **Install dependencies**
@@ -159,7 +159,7 @@ We strongly recommend using Docker for production deployment.
 
 ## Contributing
 
-Contributions of any kind are welcome! If you have a good idea or find a bug, please feel free to submit a [Pull Request](https://github.com/your-username/your-repo/pulls) or create an [Issue](https://github.com/your-username/your-repo/issues).
+Contributions of any kind are welcome! If you have a good idea or find a bug, please feel free to submit a [Pull Request](https://github.com/GEMILUXVII/TS3Aura/pulls) or create an [Issue](https://github.com/GEMILUXVII/TS3Aura/issues).
 
 We follow the standard `fork-and-pull` Git workflow.
 

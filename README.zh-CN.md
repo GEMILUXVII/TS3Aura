@@ -7,9 +7,9 @@
 <br>
 
 <div align="center">
-  <a href="https://github.com/your-username/your-repo/releases">
+  <a href="https://github.com/GEMILUXVII/TS3Aura/releases">
     <img src="https://img.shields.io/badge/version-v1.0.0-9644F4?style=for-the-badge" alt="Version"></a>
-  <a href="https://github.com/your-username/your-repo/blob/main/LICENSE">
+  <a href="https://github.com/GEMILUXVII/TS3Aura/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-E53935?style=for-the-badge" alt="License"></a>
   <a href="https://nodejs.org/">
     <img src="https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js Version"></a>
@@ -35,9 +35,9 @@
 <p align="center">
   <a href="#-功能特性"><strong>探索功能 »</strong></a>
   &nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/your-username/your-repo/issues">报告 Bug</a>
+  <a href="https://github.com/GEMILUXVII/TS3Aura/issues">报告 Bug</a>
   &nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/your-username/your-repo/issues">请求功能</a>
+  <a href="https://github.com/GEMILUXVII/TS3Aura/issues">请求功能</a>
 </p>
 
 ## 简介
@@ -78,8 +78,8 @@
 1.  **克隆项目**
 
     ```sh
-    git clone https://github.com/your-username/your-repo.git
-    cd your-repo
+    git clone https://github.com/GEMILUXVII/TS3Aura.git
+    cd TS3Aura
     ```
 
 2.  **安装依赖**
@@ -153,7 +153,7 @@
 
 ## 贡献
 
-欢迎任何形式的贡献！如果您有好的想法或发现了 Bug，请随时提交 [Pull Request](https://github.com/your-username/your-repo/pulls) 或创建 [Issue](https://github.com/your-username/your-repo/issues)。
+欢迎任何形式的贡献！如果您有好的想法或发现了 Bug，请随时提交 [Pull Request](https://github.com/GEMILUXVII/TS3Aura/pulls) 或创建 [Issue](https://github.com/GEMILUXVII/TS3Aura/issues)。
 
 我们遵循标准的 `fork-and-pull` Git 工作流。
 
