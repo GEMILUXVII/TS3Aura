@@ -30,26 +30,36 @@ export const ServerStatusCard: React.FC = () => {
 
   if (isLoading) {
     return (
-      <Card className="animate-pulse">
-        <div className="space-y-4">
-          <div className="h-6 bg-dark-600 rounded w-1/3"></div>
-          <div className="space-y-3">
-            <div className="h-4 bg-dark-600 rounded"></div>
-            <div className="h-4 bg-dark-600 rounded w-3/4"></div>
-          </div>
-        </div>
-      </Card>
+      <div className="grid md:grid-cols-2 gap-6">
+        {[...Array(2)].map((_, i) => (
+          <Card key={i} className="animate-pulse">
+            <div className="space-y-4">
+              <div className="h-6 bg-dark-600 rounded w-1/3"></div>
+              <div className="space-y-3">
+                <div className="h-4 bg-dark-600 rounded"></div>
+                <div className="h-4 bg-dark-600 rounded w-3/4"></div>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
     );
   }
 
   if (isError) {
     return (
-      <Card className="border-red-500/50">
-        <div className="text-center text-red-400">
-          <p>无法获取服务器状态</p>
-          <p className="text-sm text-gray-500 mt-2">请稍后重试</p>
-        </div>
-      </Card>
+      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
+        <Card className="border-red-500/50 bg-red-900/20">
+          <div className="text-center text-red-400">
+            <Info className="w-12 h-12 mx-auto mb-4" />
+            <h3 className="text-xl font-semibold">哎呀，出错了！</h3>
+            <p className="text-red-300 mt-2">无法获取服务器状态，请检查您的网络连接或稍后再试。</p>
+            <Button variant="secondary" size="sm" className="mt-4" onClick={() => window.location.reload()}>
+              刷新页面
+            </Button>
+          </div>
+        </Card>
+      </motion.div>
     );
   }
 

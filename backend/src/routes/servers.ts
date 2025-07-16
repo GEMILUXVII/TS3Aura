@@ -32,13 +32,14 @@ router.get('/:serverId', async (req, res, next) => {
       });
     }
     
-    res.json({
+    return res.json({
       success: true,
       data: server,
       timestamp: new Date()
     });
   } catch (error) {
     next(error);
+    return;
   }
 });
 
@@ -48,13 +49,14 @@ router.get('/:serverId/clients', async (req, res, next) => {
     const { serverId } = req.params;
     const clients = await teamSpeakService.getOnlineClients(serverId);
     
-    res.json({
+    return res.json({
       success: true,
       data: clients,
       timestamp: new Date()
     });
   } catch (error) {
     next(error);
+    return;
   }
 });
 
@@ -64,13 +66,14 @@ router.get('/:serverId/channels', async (req, res, next) => {
     const { serverId } = req.params;
     const channels = await teamSpeakService.getChannels(serverId);
     
-    res.json({
+    return res.json({
       success: true,
       data: channels,
       timestamp: new Date()
     });
   } catch (error) {
     next(error);
+    return;
   }
 });
 

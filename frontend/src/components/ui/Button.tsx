@@ -1,13 +1,18 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, MotionProps } from 'framer-motion';
 import { cn } from '../../utils';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+// Omit the props from React.ButtonHTMLAttributes that conflict with MotionProps
+type ButtonHTMLProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof MotionProps>;
+
+interface CustomButtonProps {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   loading?: boolean;
   children: React.ReactNode;
 }
+
+type ButtonProps = CustomButtonProps & ButtonHTMLProps & MotionProps;
 
 export const Button: React.FC<ButtonProps> = ({
   variant = 'primary',

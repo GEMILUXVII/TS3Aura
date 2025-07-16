@@ -1,20 +1,24 @@
 import { Request, Response, NextFunction } from 'express';
+import { AppError } from '../types/index.js';
 import { logger } from '../utils/logger.js';
 
-// 错误处理中间件
-export const errorHandler = (error: any, req: Request, res: Response, next: NextFunction): void => {
-  const statusCode = error.statusCode || 500;
-  
-  // 日志记录
-  logger.error(`Error: ${error.message || 'Unknown error'}`);
-  if (error.stack) {
-    logger.error(`Stack: ${error.stack}`);
+export const errorHandler = (err: Error, req: Request, res: Response, next: NextFunction) => {
+  if (err instanceof AppError) {
+    return res.status(err.statusCode).json({
+      success: false,
+      error: err.message,
+      timestamp: new Date(),
+    });
   }
-  
-  // 发送响应
-  res.status(statusCode).json({
+
+  // Log the error for debugging purposes
+  logger.error('An unexpected error occurred:', err);
+
+  // For other types of errors, send a generic 500 response
+  // In a production environment, you might not want to send the error message to the client
+  return res.status(500).json({
     success: false,
-    error: error.message || 'Internal server error',
-    timestamp: new Date()
+    error: 'Internal Server Error',
+    timestamp: new Date(),
   });
 };

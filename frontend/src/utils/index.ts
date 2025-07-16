@@ -7,8 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 // 格式化在线时间
-export function formatUptime(milliseconds: number): string {
-  const seconds = Math.floor(milliseconds / 1000);
+export function formatUptime(seconds: number): string {
   const days = Math.floor(seconds / 86400);
   const hours = Math.floor((seconds % 86400) / 3600);
   const minutes = Math.floor((seconds % 3600) / 60);

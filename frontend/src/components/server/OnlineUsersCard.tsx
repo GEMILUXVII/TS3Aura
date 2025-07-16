@@ -104,7 +104,7 @@ export const OnlineUsersCard: React.FC = () => {
                       <Globe className="w-3 h-3" />
                       <span>{client.country || '未知'}</span>
                     </div>
-                    <span>在线 {formatUptime(client.connectionTime)}</span>
+                    <span>在线 {formatUptime(client.connected)}</span>
                   </div>
                 </div>
               </div>

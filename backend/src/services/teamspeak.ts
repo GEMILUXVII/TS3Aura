@@ -1,4 +1,5 @@
 import { TeamSpeak } from 'ts3-nodejs-library';
+import ping from 'ping';
 import { config } from '../config/index.js';
 import { logger } from '../utils/logger.js';
 import type { ServerStatus, ClientInfo } from '../types/index.js';
@@ -94,10 +95,13 @@ class TeamSpeakService {
 
       return clients.map((c) => {
         const clientData = c as any;
+        const lastConnectedTimestamp = parseInt(String(clientData.clientLastconnected || clientData.lastconnected || '0'), 10);
+        const connectionTimeSeconds = lastConnectedTimestamp > 0 ? Math.floor(Date.now() / 1000) - lastConnectedTimestamp : 0;
+
         return {
           id: parseInt(String(clientData.clid || '0')),
           nickname: String(clientData.clientNickname || clientData.nickname || ''),
-          connected: parseInt(String(clientData.connectionConnectedTime || clientData.connectedTime || '0')),
+          connected: connectionTimeSeconds,
           idleTime: parseInt(String(clientData.clientIdleTime || clientData.idleTime || '0')),
           platform: String(clientData.clientPlatform || clientData.platform || 'unknown'),
           version: String(clientData.clientVersion || clientData.version || 'unknown'),
@@ -238,6 +242,21 @@ class TeamSpeakService {
       server.status.platform = hostInfo ? String(hostInfo.instanceOS || '') : '';
       server.status.version = String(serverInfo.virtualserverVersion || '');
       server.status.lastUpdated = new Date();
+      
+      // 如果没有在线用户，ping 值可能为 0，这是一个特性
+      if (server.status.clientsOnline === 0) {
+        try {
+          const res = await ping.promise.probe(server.status.host);
+            if (res.alive && typeof res.time === 'number') {
+              server.status.ping = Math.round(res.time);
+            } else {
+              server.status.ping = -1;
+            }
+        } catch (pingError) {
+          logger.warn(`Ping probe failed for ${server.status.host}: ${pingError}`);
+          server.status.ping = -1; // 表示 ping 失败
+        }
+      }
       
     } catch (error) {
       logger.error(`Error updating status for server ${serverId}: ${error}`);

@@ -45,7 +45,7 @@ router.get('/:id', (req, res) => {
     });
   }
   
-  res.json({
+  return res.json({
     success: true,
     data: announcement,
     timestamp: new Date()

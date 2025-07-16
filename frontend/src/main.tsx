@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
 import App from './App';
 import './index.css';
+import './i18n'; // 初始化 i18next
 
 // 创建 QueryClient 实例
 const queryClient = new QueryClient({

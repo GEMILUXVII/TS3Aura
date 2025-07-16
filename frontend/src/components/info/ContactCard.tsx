@@ -1,6 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { MessageSquare, ExternalLink, QrCode, Users } from 'lucide-react';
+import { MessageSquare, ExternalLink, Users } from 'lucide-react';
 import { Card } from '../ui/Card';
 import { Button } from '../ui/Button';
 import { CONTACT_INFO } from '../../config/constants';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { ServerStatusCard } from './components/server/ServerStatusCard';
 import { OnlineUsersCard } from './components/server/OnlineUsersCard';

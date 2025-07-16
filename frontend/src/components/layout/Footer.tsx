@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Github, Mail, MessageCircle } from 'lucide-react';
+import { Heart, Mail, MessageCircle } from 'lucide-react';
 import { CONTACT_INFO } from '../../config/constants';
 
 export const Footer: React.FC = () => {

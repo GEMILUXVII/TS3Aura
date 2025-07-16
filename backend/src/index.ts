@@ -1,3 +1,7 @@
+import 'dotenv/config';
+import { validateEnv } from './config/validateEnv.js';
+validateEnv();
+
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -7,10 +11,7 @@ import { config } from './config/index.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import { rateLimiter } from './middleware/rateLimiter.js';
 import { logger } from './utils/logger.js';
-import serverRoutes from './routes/servers.js';
-import announcementRoutes from './routes/announcements.js';
-import feedbackRoutes from './routes/feedback.js';
-import healthRoutes from './routes/health.js';
+import apiRoutes from './routes/index.js';
 
 const app = express();
 
@@ -33,10 +34,7 @@ app.use(morgan('combined', {
 app.use(rateLimiter);
 
 // API 路由
-app.use('/api/servers', serverRoutes);
-app.use('/api/announcements', announcementRoutes);
-app.use('/api/feedback', feedbackRoutes);
-app.use('/api/health', healthRoutes);
+app.use('/api', apiRoutes);
 
 // 根路径
 app.get('/', (req, res) => {

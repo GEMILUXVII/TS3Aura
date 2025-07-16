@@ -24,7 +24,7 @@ export interface ClientInfo {
   nickname: string;
   channelId: number;
   channelName: string;
-  connectionTime: number;
+  connected: number;
   country?: string;
   platform?: string;
   version?: string;
